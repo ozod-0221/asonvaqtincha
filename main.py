@@ -147,7 +147,7 @@ async def process_contact(message: Message, state: FSMContext,bot:Bot):
     await state.update_data(phonenumber=phone_number,message_id=message_id,user_id=user_id,full_name=full_name,username=username)
     await state.set_state(Form.check)
     
-    await message.answer(f"Translyatsiyaga qo'shilishuchun  uchun bizning Telegram va Instagram sahifalarimizga  a`zo bo`ling",reply_markup=subs_key())
+    await message.answer(f"Havolani olish  uchun bizning Telegram va Instagram sahifalarimizga  a`zo bo`ling",reply_markup=subs_key())
 async def check_subscription(user_id:int,bot:Bot) -> bool:
     try:
         user = await bot.get_chat_member(CHANNEL_ID, user_id)
@@ -297,10 +297,10 @@ async def get_callback(callback:CallbackQuery,state:FSMContext,bot:Bot):
         
         await bot.send_message(
                 user_id,
-                f"!Translyatsiyaga shu yerda bo`ladi : \n{link}\n\n",
+                f"Sizning kutayotgan havola : \n{link}\n\n",
                 reply_markup=ReplyKeyboardRemove()
                 )
-        await callback.answer("Tabriklaymiz , siz ro`yhatdan o`tdingiz 🚨\n Jonli efir havolasi jo`natildi 🎁🎁",show_alert=True)
+        await callback.answer("Tabriklaymiz , siz ro`yhatdan o`tdingiz 🚨\n Havola jo'natildi🎁🎁",show_alert=True)
     update_user_data(user_id,first_name,last_name,username,phone_number)     
             
        
