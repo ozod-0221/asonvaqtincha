@@ -179,14 +179,19 @@ async def forward_message(message: Message, state: FSMContext,bot:Bot):
 async def send_statistics(message: Message):
    events=get_all_events()
    for event in events:
-       referal_link = f"https://t.me/{BOT_USERNAME}?start={event["event_name"]}"
-       count=get_count_of_participants(event["event_name"])
-       await message.answer(f"📕Event nomi: {event["event_name"]}\n"
-                            f"ℹ️Event haqida ma'lumot: {event["event_description"]}\n"
-                            f"🔗Event linki: {event["event_link_end"]}\n"
-                            f"➕Qatnashuchilar soni: {count}\n"
-                            f"🔗Referal link: {referal_link}\n",
-                            reply_markup=await stats_key(event["event_name"]))
+    event_name = event["event_name"]
+    referal_link = f"https://t.me/{BOT_USERNAME}?start={event_name}"
+    count = get_count_of_participants(event_name)
+
+    await message.answer(
+        f"📕Event nomi: {event_name}\n"
+        f"ℹ️Event haqida ma'lumot: {event['event_description']}\n"
+        f"🔗Event linki: {event['event_link_end']}\n"
+        f"➕Qatnashuchilar soni: {count}\n"
+        f"🔗Referal link: {referal_link}\n",
+        reply_markup=await stats_key(event_name)
+    )
+
 @dp.callback_query(F.data.startswith("pin_"))
 async def handle_pin_event(callback: CallbackQuery, bot: Bot):
     event_id = str(callback.data.split("_")[1])
