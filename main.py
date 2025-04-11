@@ -192,9 +192,9 @@ async def send_statistics(message: Message):
         reply_markup=await stats_key(event_name)
     )
 
-@dp.callback_query(F.data.startswith("pin_"))
+@dp.callback_query(F.data.startswith("pin__"))
 async def handle_pin_event(callback: CallbackQuery, bot: Bot):
-    event_id = str(callback.data.split("_")[1])
+    event_id = str(callback.data.split("__")[1])
     await callback.answer("bajarildi", show_alert=True)
     try:
         pin_event(event_id)
@@ -203,9 +203,9 @@ async def handle_pin_event(callback: CallbackQuery, bot: Bot):
     except Exception as e:
         await callback.message.answer(f"Xatolik yuz berdi: {str(e)}")
         await callback.answer("Xatolik yuz berdi!", show_alert=True)
-@dp.callback_query(F.data.startswith("delete_"))
+@dp.callback_query(F.data.startswith("delete__"))
 async def delete_events(callback: CallbackQuery):
-    event_id = str(callback.data.split("_")[1])
+    event_id = str(callback.data.split("__")[1])
    
     try:
         delete_event(event_id)
@@ -216,10 +216,10 @@ async def delete_events(callback: CallbackQuery):
         await callback.message.answer(f"Xatolik yuz berdi: {str(e)}")
         print(f"Xatolik yuz berdi: {str(e)}")
         await callback.answer("Xatolik yuz berdi!", show_alert=True)
-@dp.callback_query(F.data.startswith("participants_")) 
+@dp.callback_query(F.data.startswith("participants__")) 
 async def handle_export_participants(callback: CallbackQuery, bot: Bot):
     try:
-        event_name = str(callback.data.split("_")[1])
+        event_name = str(callback.data.split("__")[1])
         
         await callback.answer("Excel fayl tayyorlanmoqda...", show_alert=False)
         

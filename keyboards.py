@@ -34,16 +34,16 @@ async def stats_key(event_name: str) -> InlineKeyboardMarkup:
     if is_event_active(event_name):
         builder = InlineKeyboardBuilder()
         builder.add(
-            InlineKeyboardButton(text="👤 Qatnashuvchilar",callback_data=f"participants_{event_name}"),
-            InlineKeyboardButton(text="🗑️O'chirish",callback_data=f"delete_{event_name}"),
-            InlineKeyboardButton(text="📍Mahkamlangan",callback_data=f"pin_{event_name}"),
+            InlineKeyboardButton(text="👤 Qatnashuvchilar",callback_data=f"participants__{event_name}"),
+            InlineKeyboardButton(text="🗑️O'chirish",callback_data=f"delete__{event_name}"),
+            InlineKeyboardButton(text="📍Mahkamlangan",callback_data=f"pin__{event_name}"),
         )
     else:
         
         builder.add(
-            InlineKeyboardButton(text="👤 Qatnashuvchilar",callback_data=f"participants_{event_name}"),
-            InlineKeyboardButton(text="🗑️O'chirish",callback_data=f"delete_{event_name}"),
-            InlineKeyboardButton(text="🔁Faollashtirish",callback_data=f"pin_{event_name}"),
+            InlineKeyboardButton(text="👤 Qatnashuvchilar",callback_data=f"participants__{event_name}"),
+            InlineKeyboardButton(text="🗑️O'chirish",callback_data=f"delete__{event_name}"),
+            InlineKeyboardButton(text="🔁Faollashtirish",callback_data=f"pin__{event_name}"),
         )
     builder.adjust(1)
     return builder.as_markup()
