@@ -271,7 +271,7 @@ async def get_callback(callback:CallbackQuery,state:FSMContext,bot:Bot):
         f"🆔Foydalanuvchi ID: {user_data.get('user_id', 'Aniqlanmadi')}\n"
         f"☎️Telefon: {phone_number}\n"
         f"👤Username: @{callback.from_user.username if callback.from_user.username else ' Aniqlanmadi'}\n"
-        f"🎁Event nomi:{event_name if event_name else "Active event orqali orqali"}\n"
+        f"🎁Event nomi:{event_name if event_name else 'Active event orqali orqali'}\n"
     )
         for admin_id in ADMIN_IDS:
             try:
