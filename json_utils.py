@@ -284,7 +284,7 @@ def get_count_of_participants(event_name):
 
 EVENTS_FILE = 'events.json'
 PARTICIPANTS_FILE = 'event_participants.json'
-USERS_FILE = 'user_data.json'
+USERS_FILE = 'users.json'
 
 def get_event_participants_data(event_name: str):
     if not all(os.path.exists(f) for f in [EVENTS_FILE, PARTICIPANTS_FILE, USERS_FILE]):
